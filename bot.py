@@ -7,7 +7,7 @@ from telegram.ext import Application, ChatJoinRequestHandler, ContextTypes
 
 BOT_TOKEN = "8429990932:AAE5criYIBQu4eJ6WapbQFpL7p4HhBsrGJ8"
 
-USER_MESSAGE = 🎉 Добро пожаловать в наш канал!
+USER_MESSAGE =  Добро пожаловать в наш канал!
 
 ✅ Ваша заявка одобрена автоматически.
 
