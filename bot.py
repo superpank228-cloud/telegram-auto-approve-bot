@@ -9,12 +9,6 @@ from telegram.ext import (
     ContextTypes,
 )
 
-# 🔐 Токен берём из ENV
-BOT_TOKEN = os.getenv("8429990932:AAHItGeglxbSuZ19pKPaWBy1V-cBxDajgqU")
-
-if not BOT_TOKEN:
-    raise RuntimeError("❌ BOT_TOKEN не задан в переменных окружения")
-
 USER_MESSAGE = """🎉 Добро пожаловать в наш канал!
 
 ✅ Ваша заявка одобрена автоматически.
