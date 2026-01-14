@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import os
 import logging
 from telegram import Update
 from telegram.ext import (
@@ -8,7 +9,11 @@ from telegram.ext import (
     ContextTypes,
 )
 
-BOT_TOKEN = "8429990932:AAE5criYIBQu4eJ6WapbQFpL7p4HhBsrGJ8"
+# 🔐 Токен берём из ENV
+BOT_TOKEN = os.getenv("8429990932:AAHItGeglxbSuZ19pKPaWBy1V-cBxDajgqU")
+
+if not BOT_TOKEN:
+    raise RuntimeError("❌ BOT_TOKEN не задан в переменных окружения")
 
 USER_MESSAGE = """🎉 Добро пожаловать в наш канал!
 
@@ -21,8 +26,6 @@ USER_MESSAGE = """🎉 Добро пожаловать в наш канал!
 💡 Подписывайтесь на наши другие ресурсы:
 👉 Канал 2: скоро будет!
 👉 Группа: https://t.me/+gTDkVdfPWbkwZGNi
-
-📢 Для связи: mode_dibil@mail.ru
 
 Спасибо что с нами! 🚀
 """
