@@ -9,11 +9,11 @@ from telegram.ext import (
     ContextTypes,
 )
 
-# 🔐 Берём токен из переменных окружения
+# 🔐 Токен берётся из переменных окружения
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
 if not BOT_TOKEN:
-    raise ValueError("❌ BOT_TOKEN не найден. Добавь его в переменные окружения.")
+    raise ValueError("BOT_TOKEN не найден. Добавь его в переменные окружения.")
 
 USER_MESSAGE = """🎉 Добро пожаловать в наш канал!
 
@@ -48,7 +48,7 @@ async def handle_join_request(update: Update, context: ContextTypes.DEFAULT_TYPE
         )
         logging.info(f"Заявка принята: {user.id}")
 
-        # 2️⃣ Пишем пользователю
+        # 2️⃣ Отправляем сообщение пользователю
         await context.bot.send_message(
             chat_id=user.id,
             text=f"👋 Привет, {user.full_name}!\n\n{USER_MESSAGE}",
@@ -57,3 +57,12 @@ async def handle_join_request(update: Update, context: ContextTypes.DEFAULT_TYPE
         logging.info(f"Сообщение отправлено: {user.id}")
 
     except Exception as e:
+        logging.error(f"Ошибка при обработке заявки: {e}")
+
+def main():
+    app = ApplicationBuilder().token(BOT_TOKEN).build()
+    app.add_handler(ChatJoinRequestHandler(handle_join_request))
+    app.run_polling()
+
+if __name__ == "__main__":
+    main()
